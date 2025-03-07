@@ -1,0 +1,276 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Gruplar arasında boşluk */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    flex: 1; /* Sol tarafta yer açar */
+}
+
+.logo img {
+    height: 30px;
+}
+
+.nav-links {
+    flex: 2; /* Ortada yer açar */
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Linklerin tam ortada kalmasını sağlar */
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007bff; /* Hover olduğunda link rengi değişir */
+}
+
+.icons {
+    flex: 1; /* Sağda yer açar */
+    display: flex;
+    justify-content: flex-end; /* İkonları sağa yaslar */
+    align-items: center;
+}
+
+.icons i {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.icons a {
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+    color: inherit; /* Varsayılan metin rengini korur */
+    display: inline-block; /* İkonların düzgün hizalanmasını sağlar */
+}
+
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.background-title {
+    font-size: 5.5rem;
+    font-weight: bold;
+    color: #e5e5e5;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-details {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-details h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.description {
+    line-height: 1.6;
+}
+
+.colors {
+    display: flex;
+    gap: 10px;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.color:hover {
+    transform: scale(1.1); /* Daha büyük bir büyütme efekti */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Daha yumuşak ve belirgin bir gölge */
+}
+
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select {
+    padding: 5px 10px;
+}
+
+.add-to-basket {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-to-basket:hover {
+    background-color: #555;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column; /* Alt alta düzen */
+        align-items: center;
+    }
+
+    .product-image, 
+    .product-details {
+        max-width: 100%; /* Ekranın tamamını kaplar */
+    }
+}
+
+#products {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product {
+    margin: 0 10px; /* Sağ ve sol tarafa boşluk ekler */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+
+.product img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 40px;
+}
+
+.product:hover {
+    transform: scale(1.1); /* Büyütme efekti */
+}
+
+.alert-container {
+    position: absolute;
+    top: 80px; /* Navbarın altında */
+    right: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 2rem;
+    padding: 1rem;
+    opacity: 0; /* Başlangıçta görünmez */
+    transform: translateY(-20px); /* Yukarıda başlar */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Yumuşak geçiş */
+}
+
+.alert-container.show {
+    opacity: 1;
+    transform: translateY(0); /* Orijinal konuma gelir */
+}
+
+/* Kaybolurken */
+.alert-container.hide {
+    opacity: 0;
+    transform: translateY(-20px); /* Yeniden yukarı hareket eder */
+}
+
+.alert-content {
+    display: flex;
+    align-items: center; /* Resim ve yazıyı dikeyde hizalar */
+    justify-content: space-between; /* Yazı ve çarpıyı yatayda ayırır */
+}
+
+.alert-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-right: 10px; /* Resimle yazı arasında boşluk bırakır */
+}
+
+.alert-text {
+    flex-grow: 1; /* Yazıyı çarpıya göre genişletir */
+    display: flex;
+    align-items: flex-start; /* Yazıyı üst tarafa hizalar */
+    flex-direction: column;
+}
+
+.close-alert {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    margin-left: 10px; /* Yazıyla arasında boşluk bırakır */
+}
